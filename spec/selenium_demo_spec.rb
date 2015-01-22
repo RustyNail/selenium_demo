@@ -4,7 +4,7 @@ require 'rspec'
 require 'yaml'
 require 'uri'
 
-DEFAULT_MESSAGE_SHOW_TIME = 5
+ALERT_TIME = ENV['ALERT_TIME'].to_i || 5
 MESSAGES = YAML.load_file('message.yml')
 
 describe 'Selenium' do
@@ -92,7 +92,7 @@ describe 'Selenium' do
 
   private
 
-  def alert(key, show_time = DEFAULT_MESSAGE_SHOW_TIME)
+  def alert(key, alert_time = ALERT_TIME)
     msg = case key
     when String
       MESSAGES[key].join("\\n")
@@ -100,7 +100,7 @@ describe 'Selenium' do
       key.join("\\n")
     end
     @driver.execute_script "window.alert('#{msg}');"
-    sleep show_time
+    sleep alert_time
     @driver.switch_to.alert.accept
     sleep 1
   end
