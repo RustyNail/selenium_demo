@@ -1,0 +1,49 @@
+introduction:
+  - ようこそSeleniumの世界へ!!
+  - Seleniumでどのようなことができるのか
+  - Seleniumを使ってXX個のワザをご紹介します
+load_page:
+  - 1. ページのロード
+  - 例) https://google.com ページを開く
+  - => @driver.get [URL]
+input_text:
+  - 2. テキストの入力
+  - 例) 「ピタゴラスイッチ wikipedia」と入力する
+  - => @driver.find_element(:css, [selector]).send_keys([text])
+click_submit_button:
+  - 3. 送信ボタンのクリック
+  - 例) 検索ボタンをクリックする
+  - => @driver.find_element(:css, [selector]).submit
+click_link:
+  - 4. リンクのクリック
+  - 例) ピタゴラスイッチ - Wikipedia のリンクをクリックする
+  - => @driver.find_element(:link, [text]).click
+find_element:
+  - find_elementでは様々な方法で要素の抽出ができます
+  - :id => Id
+  - :class(:class_name) => ClassName
+  - :link(:link_text) => LinkText
+  - :name => Name
+  - :tag_name => TagName
+  - :css => CssSelector
+  - :xpath => Xpath
+assert_title:
+  - 5. ページタイトルの検証
+  - => @driver.title
+reload_page:
+  - 6. ページの再読み込み
+  - => @driver.navigate.refresh
+accept_alert:
+  - 7. アラートの処理
+  - => @driver.switch_to.alert.[accept|dismiss]
+move_to_another_window:
+  - 8. ウィンドウの切り替え
+  - 例) ウィンドウAはWikipediaのFacebook、ウィンドウBはWikiPediaページ
+  - ウィンドウA => B => Aと切り替える
+  - => wids = @driver.window_handles
+  - => @driver.switch_to.window(wids.last)
+close_window:
+  - 9. ウィンドウを閉じる
+  - => @driver.close
+javascript:
+  - 10. Javascriptの実行
