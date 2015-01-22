@@ -5,7 +5,7 @@ require 'yaml'
 require 'uri'
 
 ALERT_TIME = ENV['ALERT_TIME'].to_i || 5
-MESSAGES = YAML.load_file('message.yml')
+MESSAGES = YAML.load_file(File.expand_path('spec/support/message.yml'))
 
 describe 'Selenium' do
   before do
