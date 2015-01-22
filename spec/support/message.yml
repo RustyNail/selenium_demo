@@ -1,7 +1,7 @@
 introduction:
   - ようこそSeleniumの世界へ!!
   - Seleniumでどのようなことができるのか
-  - Seleniumを使ってXX個のワザをご紹介します
+  - Seleniumを使ってご紹介します
 load_page:
   - 1. ページのロード
   - 例) https://google.com ページを開く
@@ -45,5 +45,10 @@ move_to_another_window:
 close_window:
   - 9. ウィンドウを閉じる
   - => @driver.close
-javascript:
-  - 10. Javascriptの実行
+execute_javascript:
+  - 10. javascriptの実行
+  - 例) javascriptで確認ダイアログを出す
+  - => @driver.execute_script [script]
+save_screenshot:
+  - 11. スクリーンショットの保存
+  - 例) Yahooのトップページのスクリーンショットを撮る

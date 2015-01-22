@@ -34,7 +34,7 @@ describe 'Selenium' do
     @driver.get 'https://google.com'
     ### テキストを入力
     alert 'input_text'
-    @driver.find_element(:css, '#lst-ib').send_keys 'ピタゴラスイッチ wikipedia'
+    @driver.find_element(:name, 'q').send_keys 'ピタゴラスイッチ wikipedia'
     ### 検索ボタンをクリック
     alert 'click_submit_button'
     @driver.find_element(:css, "input[name='btnK']").submit
@@ -86,9 +86,26 @@ describe 'Selenium' do
     assert_title 'Wikipedia | Facebook'
   end
 
-#  it 'should execute javascript ' do
-#    @driver.execute_script
-#  end
+  it 'should execute javascript' do
+    alert 'execute_javascript'
+    @driver.execute_script("window.confirm('javascriptで出したダイアログ')")
+    expect(@driver.switch_to.alert.text).to eq 'javascriptで出したダイアログ'
+    sleep 4
+    @driver.switch_to.alert.accept
+  end
+
+  it 'should save screenshot' do
+    alert 'save_screenshot'
+    @driver.get 'http://www.yahoo.co.jp/'
+    file_name = 'yahoo.png'
+    file_path = File.expand_path(file_name)
+    @driver.save_screenshot file_name
+    sleep 2
+    expect(File.exist?(file_path)).to be_truthy
+    @driver.get "file://#{file_path}"
+    sleep 4 # 撮ったスクリーンショットの表示
+    File.delete file_path # スクリーンショットの削除
+  end
 
   private
 
