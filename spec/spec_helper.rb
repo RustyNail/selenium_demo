@@ -39,20 +39,22 @@ def setup
 end
 
 def alert(key, alert_time = ALERT_TIME)
-  msg = case key
-  when String
-    MESSAGES[key]
-  when Array
-    key
+  unless ENV['TRAVIS'] # Travisでは説明出しても仕方ないので出さない
+    msg = case key
+    when String
+      MESSAGES[key]
+    when Array
+      key
+    end
+    # 「このページによる追加のダイアログ表示を抑止する」
+    # が出るときが見にくいので改行を挟む
+    line = "\\n" + '*'*50 + "\\n"
+    msg = line + msg.join("\\n") + line
+    @driver.execute_script "window.alert('#{msg}');"
+    sleep alert_time.to_i
+    @driver.switch_to.alert.accept
+    sleep 1
   end
-  # 「このページによる追加のダイアログ表示を抑止する」
-  # が出るときが見にくいので改行を挟む
-  line = "\\n" + '*'*50 + "\\n"
-  msg = line + msg.join("\\n") + line
-  @driver.execute_script "window.alert('#{msg}');"
-  sleep alert_time.to_i
-  @driver.switch_to.alert.accept rescue nil
-  sleep 1
 end
 
 def assert_title(title)

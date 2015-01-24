@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/RustyNail/selenium_demo.svg?branch=master)](https://travis-ci.org/RustyNail/selenium_demo)
+
 # selenium_demo
 
 ## What is this?
