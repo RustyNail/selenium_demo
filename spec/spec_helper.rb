@@ -51,7 +51,7 @@ def alert(key, alert_time = ALERT_TIME)
   msg = line + msg.join("\\n") + line
   @driver.execute_script "window.alert('#{msg}');"
   sleep alert_time.to_i
-  @driver.switch_to.alert.accept
+  @driver.switch_to.alert.accept rescue nil
   sleep 1
 end
 

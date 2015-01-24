@@ -15,7 +15,7 @@ describe 'Selenium' do
     @driver.find_element(:name, 'q').send_keys 'ピタゴラスイッチ wikipedia'
     ### 検索ボタンをクリック
     alert 'click_submit_button'
-    @driver.find_element(:css, "input[name='btnK']").submit
+    @driver.find_element(:name, 'btnK').submit
     ### リンクのクリック
     alert 'click_link'
     @driver.find_element(:link, 'ピタゴラスイッチ - Wikipedia').click
