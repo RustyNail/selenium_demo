@@ -51,7 +51,7 @@ execute_javascript:
 save_screenshot:
   - 11. スクリーンショットの保存
   - 例) Yahooのトップページのスクリーンショットを撮る
-  - @driver.save_screenshot [filename]
+  - => @driver.save_screenshot [filename]
 download_file:
   - 12. ファイルのダウンロード
   - 例) 郵便番号データのダウンロード
