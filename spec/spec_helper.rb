@@ -4,7 +4,7 @@ require 'rspec'
 require 'yaml'
 require 'uri'
 
-ALERT_TIME = ENV['ALERT_TIME'].to_i || 10
+ALERT_TIME = ENV['ALERT_TIME'] || 10
 MESSAGES = YAML.load_file(File.expand_path('spec/support/message.yml'))
 
 def setup
