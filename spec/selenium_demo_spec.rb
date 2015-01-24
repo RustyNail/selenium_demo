@@ -2,7 +2,7 @@
 
 describe 'Selenium' do
   before { setup }
-  after { @driver;@driver.quit }
+  after { @driver.quit if @driver }
 
   it 'should show wikipedia page' do
     ### はじめに
