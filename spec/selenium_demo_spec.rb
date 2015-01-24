@@ -2,7 +2,7 @@
 
 describe 'Selenium' do
   before { setup }
-  after { @driver.quit }
+  after { @driver;@driver.quit }
 
   it 'should show wikipedia page' do
     ### はじめに
@@ -81,7 +81,22 @@ describe 'Selenium' do
     sleep 2
     expect(File.exist?(file_path)).to be_truthy
     @driver.get "file://#{file_path}"
-    sleep 4 # 撮ったスクリーンショットの表示
+    sleep 5 # 撮ったスクリーンショットの表示
     File.delete file_path # スクリーンショットの削除
+  end
+
+  it 'should download file' do
+    alert 'download_file'
+    ### 郵便番号データダウンロードページを表示
+    @driver.get 'http://www.post.japanpost.jp/zipcode/dl/roman-zip.html'
+    @driver.find_element(:link, '全国一括').click
+    wait_until_download_completing '.'
+    file_name = 'ken_all_rome.zip' 
+    dir_path = File.expand_path('.')
+    file_path = "#{dir_path}/#{file_name}"
+    expect(File.exist?(file_path)).to be_truthy
+    @driver.get dir_path
+    sleep 5 # ファイルの表示
+    File.delete file_path # ファイルの削除
   end
 end

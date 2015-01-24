@@ -9,10 +9,10 @@ load_page:
 input_text:
   - 2. テキストの入力
   - 例) 「ピタゴラスイッチ wikipedia」と入力する
-  - => @driver.find_element(:css, [selector]).send_keys([text])
+  - => @driver.find_element(:id, [id]).send_keys([text])
 click_submit_button:
   - 3. 送信ボタンのクリック
-  - 例) 検索ボタンをクリックする
+  - 例) Google検索ボタンをクリックする
   - => @driver.find_element(:css, [selector]).submit
 click_link:
   - 4. リンクのクリック
@@ -38,8 +38,7 @@ accept_alert:
   - => @driver.switch_to.alert.[accept|dismiss]
 move_to_another_window:
   - 8. ウィンドウの切り替え
-  - 例) ウィンドウAはWikipediaのFacebook、ウィンドウBはWikiPediaページ
-  - ウィンドウA => B => Aと切り替える
+  - 例) WikipediaのFacebook、WikiPediaページを切り替える
   - => wids = @driver.window_handles
   - => @driver.switch_to.window(wids.last)
 close_window:
@@ -52,3 +51,7 @@ execute_javascript:
 save_screenshot:
   - 11. スクリーンショットの保存
   - 例) Yahooのトップページのスクリーンショットを撮る
+  - @driver.save_screenshot [filename]
+download_file:
+  - 12. ファイルのダウンロード
+  - 例) 郵便番号データのダウンロード
