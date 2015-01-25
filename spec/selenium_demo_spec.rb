@@ -18,8 +18,9 @@ describe 'Selenium' do
     @driver.find_element(:name, 'btnK').submit
     ### リンクのクリック
     alert 'click_link'
+    sleep 4 if ENV['TRAVIS'] # for TRAVIS
     @driver.find_element(:link, 'ピタゴラスイッチ - Wikipedia').click
-    alert('find_element', 5)
+    alert 'find_element'
     ### ページタイトルの検証
     alert 'assert_title'
     expect(@driver.title).to eq 'ピタゴラスイッチ - Wikipedia'
