@@ -28,7 +28,7 @@ def setup
   ### 2: ダウンロードに指定された最後のフォルダ
   download_dir = File.expand_path('.')
   download_dir = download_dir.gsub(/\//, '\\') if is_win?
-  profile['browser.download.dir'] = File.expand_path('.')
+  profile['browser.download.dir'] = download_dir
   profile['browser.download.folderList'] = 2
   # ダウンロードするファイルの保存先フォルダが指定してあればそれを使用
   profile['browser.download.useDownloadDir'] = true
