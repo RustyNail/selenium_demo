@@ -26,6 +26,8 @@ def setup
   ### 0: デスクトップ
   ### 1: ダウンロードフォルダ
   ### 2: ダウンロードに指定された最後のフォルダ
+  download_dir = File.expand_path('.')
+  download_dir = download_dir.gsub(/\//, '\\') if is_win?
   profile['browser.download.dir'] = File.expand_path('.')
   profile['browser.download.folderList'] = 2
   # ダウンロードするファイルの保存先フォルダが指定してあればそれを使用
@@ -67,4 +69,9 @@ def wait_until_download_completing(dir, max_wait_time = 30)
   max_wait_time.times do
     sleep 1 unless Dir.entries(dir).grep(/.*\.part/).empty?
   end
+end
+
+def is_win?
+  return true if RUBY_PLATFORM =~ /mswin(?!ce)|mingw|cygwin|bccwin/
+  false
 end

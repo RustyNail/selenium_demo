@@ -96,7 +96,7 @@ describe 'Selenium' do
     dir_path = File.expand_path('.')
     file_path = "#{dir_path}/#{file_name}"
     expect(File.exist?(file_path)).to be_truthy
-    @driver.get dir_path
+    @driver.get "file://#{dir_path}"
     sleep 5 # ファイルの表示
     File.delete file_path # ファイルの削除
   end
